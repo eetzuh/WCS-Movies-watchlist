@@ -73,7 +73,7 @@ function validate() {
   const forms = document.querySelectorAll(".needs-validation");
   Array.from(forms).forEach(function (form) {
     form.addEventListener(
-      "change",
+      "keyup",
       function (event) {
         if (!form.checkValidity()) {
           event.preventDefault();
