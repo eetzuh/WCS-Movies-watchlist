@@ -97,7 +97,6 @@ function checkVal() {
 /*funkcija koja dodaje unesene podatke filma u niz arrayOfMovies, a zatim poziva funkciju printMovies(), 
 koja ga dodaje u tabelu*/
 function addMovie() {
-  console.log("yes");
   let userInputs = {
     watched: document.getElementById("movieWatched").checked,
     name: document.getElementById("movieName").value,
