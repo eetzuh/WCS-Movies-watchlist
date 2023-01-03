@@ -25,18 +25,18 @@ let arrayOfMovies = [
   },
 ];
 
-let movieNum = 0;
-
 /*funkcija koja dodaje filmove u tabelu, čitajući objekte sa niza arrayOfMovies. Poziva se na onload, da bi se hardkodovani filmovi odmah prikazali u tabeli.
- Dodavanjem filma u formi, (funkcija addMovie(), linija 75), dodaje film u niz, pa se zatim poziva funkcija printMovies().
- Varijabla movieNum čita zadnji indeks objekta film, koji je dodat u niz arrayOfMovies, da bi pri pozivu funkcije printMovies() u tabelu ne bi 
- bili dodati prethodni. */
+Dodavanjem filma u formi, (funkcija addMovie(), linija 75), dodaje film u niz, pa se zatim poziva funkcija printMovies().
+Varijabla movieNum čita zadnji indeks objekta film, koji je dodat u niz arrayOfMovies, da bi pri pozivu funkcije printMovies() u tabelu ne bi 
+bili dodati prethodni. */
 
+let movieNum = 0;
 function printMovies() {
   let tableBody = document.getElementById("tableBody");
   let row = tableBody.insertRow();
   for (let i = movieNum; i < arrayOfMovies.length; i++) {
     let cell = row.insertCell();
+    cell.classList = "align-middle";
     if (arrayOfMovies[i].watched == true) {
       check = `<input onclick="changeColor()" type="checkbox" name='watched' checked>`;
     } else {
@@ -45,6 +45,7 @@ function printMovies() {
     cell.innerHTML += check;
     for (let j = 1; j < Object.keys(arrayOfMovies[i]).length; j++) {
       cell = row.insertCell();
+      cell.classList = "align-middle";
       cell.innerHTML += Object.values(arrayOfMovies[i])[j];
     }
     row = tableBody.insertRow();
@@ -69,8 +70,10 @@ function changeColor() {
   }
 }
 
+
+const forms = document.querySelectorAll(".needs-validation");
+
 function validate() {
-  const forms = document.querySelectorAll(".needs-validation");
   Array.from(forms).forEach(function (form) {
     form.addEventListener(
       "keyup",
@@ -86,9 +89,8 @@ function validate() {
   });
 }
 
-function checkVal() {
+function checkVal(e) {
   validate();
-  const forms = document.querySelectorAll(".needs-validation");
   if (Array.from(forms).every((form) => form.checkValidity() == true)) {
     document.getElementById("submitBtn").classList.remove("disabled");
   }
@@ -115,4 +117,5 @@ function addMovie() {
     comment: (document.getElementById("movieCom").value = ""),
     actors: (document.getElementById("movieActors").value = ""),
   };
+  document.getElementById("formId").classList = "row needs-validation";
 }
