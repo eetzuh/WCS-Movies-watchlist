@@ -25,10 +25,10 @@ let arrayOfMovies = [
   },
 ];
 
-/*funkcija koja dodaje filmove u tabelu, čitajući objekte sa niza arrayOfMovies. Poziva se na onload, da bi se hardkodovani filmovi odmah prikazali u tabeli.
-Dodavanjem filma u formi, (funkcija addMovie(), linija 75), dodaje film u niz, pa se zatim poziva funkcija printMovies().
-Varijabla movieNum čita zadnji indeks objekta film, koji je dodat u niz arrayOfMovies, da bi pri pozivu funkcije printMovies() u tabelu ne bi 
-bili dodati prethodni. */
+/*funkcija koja dodaje filmove u tabelu, čitajući objekte sa niza arrayOfMovies, koji čuva podatake o svakom filmu prikazanog u tabeli. Poziva se na onload, da bi se hardkodovani filmovi odmah prikazali u tabeli.
+Kikom na dugme "dodaj" poslije unosa podataka u formi (funkcija addMovie(), linija 95), film se dodaje u niz, pa se zatim poziva funkcija printMovies().
+Varijabla movieNum čita zadnji indeks objekta film, koji je dodat u niz arrayOfMovies, da bi pri pozivu funkcije printMovies()
+u tabelu ne bi bili dodati prethodni. */
 
 let movieNum = 0;
 function printMovies() {
@@ -60,35 +60,30 @@ function changeColor() {
   for (let i = 0; i < elements.length; i++) {
     if (elements[i].checked == true) {
       arrayOfMovies[i].watched = true;
-      elements[i].parentElement.parentElement.style =
-        "background-color:#D1E7DD";
+      elements[i].parentElement.parentElement.style ="background-color:#D1E7DD";
     } else {
       arrayOfMovies[i].watched = false;
-      elements[i].parentElement.parentElement.style =
-        "background-color:#F8D7DA";
+      elements[i].parentElement.parentElement.style ="background-color:#F8D7DA";
     }
   }
 }
-
 
 const forms = document.querySelectorAll(".needs-validation");
 
 function validate() {
   Array.from(forms).forEach(function (form) {
-    form.addEventListener(
-      "keyup",
-      function (event) {
+    form.addEventListener("keyup",function (event) {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
         }
         form.classList.add("was-validated");
       },
-      false
-    );
+      false);
   });
 }
 
+/*funkcija koja se poziva na svako pritisnuto dugme, provjerava vrijednost i omogućava slanje unesenih podataka pritiskom na dugme samo u slučaju kada su sva polja pravilno ispunjena*/
 function checkVal(e) {
   validate();
   if (Array.from(forms).every((form) => form.checkValidity() == true)) {
@@ -96,21 +91,25 @@ function checkVal(e) {
   }
 }
 
-/*funkcija koja dodaje unesene podatke filma u niz arrayOfMovies, a zatim poziva funkciju printMovies(), 
-koja ga dodaje u tabelu*/
+/*funkcija koja dodaje unesene podatke filma u niz arrayOfMovies, a zatim poziva funkciju printMovies(), koja ga dodaje u tabelu*/
 function addMovie() {
   let userInputs = {
-    watched: document.getElementById("movieWatched").checked,
+    watched: false,
     name: document.getElementById("movieName").value,
     year: document.getElementById("movieYear").value,
     country: document.getElementById("movieCountry").value,
     comment: document.getElementById("movieCom").value,
     actors: document.getElementById("movieActors").value.split(","),
   };
+  if(document.getElementById("yesRadio").checked){
+    userInputs.watched=true
+  }
   arrayOfMovies.push(userInputs);
   printMovies();
+
+  /*ovo služi da podrazumijevano radio dugme bude "ne" i polja forme u modalnom prozoru budu prazna i bez validacije poslije dodavanja novog filma, pri sledećem otvaranju klikom na dugme "dodaj novi film"*/
   userInputs = {
-    watched: (document.getElementById("movieWatched").checked = false),
+    watched: (document.getElementById("noRadio").checked=true),
     name: (document.getElementById("movieName").value = ""),
     year: (document.getElementById("movieYear").value = ""),
     country: (document.getElementById("movieCountry").value = ""),
