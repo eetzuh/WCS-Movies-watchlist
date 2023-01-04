@@ -117,4 +117,5 @@ function addMovie() {
     actors: (document.getElementById("movieActors").value = ""),
   };
   document.getElementById("formId").classList = "row needs-validation";
+  document.getElementById("submitBtn").classList.add("disabled");
 }
