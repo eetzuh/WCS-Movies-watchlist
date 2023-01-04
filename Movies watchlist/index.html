@@ -28,22 +28,22 @@
                 <form class="row needs-validation" id="formId" novalidate>
                     <div class="mb-3">
                         <label for="name" class="form-label">Naziv filma:</label>
-                        <input type="text" class="form-control" id="movieName" onkeyup="checkVal(this)" placeholder="Unesi naziv filma.." required>
+                        <input type="text" class="form-control" id="movieName" onkeyup="checkVal()" placeholder="Unesi naziv filma.." required>
                     </div>
                     <div class="mb-2 col-5">
                         <label for="year" class="form-label">Godina prikaza:</label>
-                        <input type="number" min="1930" max="2021"class="form-control" onkeyup="checkVal(this)" id="movieYear" placeholder="Unesi godinu.." required>
+                        <input type="number" min="1930" max="2021"class="form-control" onkeyup="checkVal()" id="movieYear" placeholder="Unesi godinu.." required>
                         <div class="invalid-feedback ms-1">
                           1930-2021
                         </div>
                       </div>
                     <div class="mb-3 col-7">
                         <label for="country" class="form-label">Država:</label>
-                        <input type="text" class="form-control" id="movieCountry" onkeyup="checkVal(this)" placeholder="Unesi naziv države.." >
+                        <input type="text" class="form-control" id="movieCountry" onkeyup="checkVal()" placeholder="Unesi naziv države.." >
                     </div>
                     <div class="mb-3">
                         <label for="comment" class="form-label">Napomena:</label>
-                        <textarea class="form-control" id="movieCom" onkeyup="checkVal(this)" placeholder="Unesi napomenu.."></textarea>
+                        <textarea class="form-control" id="movieCom" onkeyup="checkVal()" placeholder="Unesi napomenu.."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="actors" class="form-label">Glumci:</label>

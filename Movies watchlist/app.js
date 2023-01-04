@@ -84,7 +84,7 @@ function validate() {
 }
 
 /*funkcija koja se poziva na svako pritisnuto dugme, provjerava vrijednost i omogućava slanje unesenih podataka pritiskom na dugme samo u slučaju kada su sva polja pravilno ispunjena*/
-function checkVal(e) {
+function checkVal() {
   validate();
   if (Array.from(forms).every((form) => form.checkValidity() == true)) {
     document.getElementById("submitBtn").classList.remove("disabled");
