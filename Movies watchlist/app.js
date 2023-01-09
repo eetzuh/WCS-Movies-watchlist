@@ -74,7 +74,7 @@ const forms = document.querySelectorAll(".needs-validation");
 
 function validate() {
   Array.from(forms).forEach(function (form) {
-    form.addEventListener("change",function (event) {
+    form.addEventListener("submit",function (event) {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
@@ -84,16 +84,18 @@ function validate() {
   });
 }
 
-/*funkcija koja se poziva na svako pritisnuto dugme, provjerava vrijednost i omogućava slanje unesenih podataka pritiskom na dugme samo u slučaju kada su sva polja pravilno ispunjena*/
+/*funkcija koja omogućava dodavanje filma pritiskom na dugme samo u slučaju kada su sva polja pravilno ispunjena*/
+let successfulInput="no"
 function checkVal() {
   validate();
   if (Array.from(forms).every((form) => form.checkValidity() == true)) {
-    document.getElementById("submitBtn").classList.remove("disabled");
+    successfulInput="yes"
   }
 }
 
-/*funkcija koja dodaje unesene podatke filma u niz arrayOfMovies, a zatim poziva funkciju printMovies(), koja ga dodaje u tabelu*/
+/*funkcija koja ukoliko su sva polja pravilno ispunjena, dodaje unesene podatke filma u niz arrayOfMovies, zatim poziva funkciju printMovies(), koja ga dodaje u tabelu*/
 function addMovie() {
+  checkVal()
   let userInputs = {
     watched: document.getElementById("movieWatched").checked,
     name: document.getElementById("movieName").value,
@@ -102,17 +104,18 @@ function addMovie() {
     comment: document.getElementById("movieCom").value,
     actors: document.getElementById("movieActors").value.split(","),
   };
-  arrayOfMovies.push(userInputs);
-  printMovies();
-  /*ovo služi da polja forme u modalnom prozoru budu prazna i bez validacije poslije dodavanja novog filma, pri sledećem otvaranju klikom na dugme "dodaj novi film"*/
-  userInputs = {
-    watched: (document.getElementById("movieWatched").checked = false),
-    name: (document.getElementById("movieName").value = ""),
-    year: (document.getElementById("movieYear").value = ""),
-    country: (document.getElementById("movieCountry").value = ""),
-    comment: (document.getElementById("movieCom").value = ""),
-    actors: (document.getElementById("movieActors").value = ""),
-  };
-  document.getElementById("formId").classList = "row needs-validation";
-  document.getElementById("submitBtn").classList.add("disabled");
+  if(successfulInput=="yes"){
+    arrayOfMovies.push(userInputs);
+    printMovies();
+    /*ovo služi da polja forme u modalnom prozoru budu prazna poslije dodavanja novog filma*/
+    userInputs = {
+      watched: (document.getElementById("movieWatched").checked = false),
+      name: (document.getElementById("movieName").value = ""),
+      year: (document.getElementById("movieYear").value = ""),
+      country: (document.getElementById("movieCountry").value = ""),
+      comment: (document.getElementById("movieCom").value = ""),
+      actors: (document.getElementById("movieActors").value = ""),
+    };
+    successfulInput="no"
+  }
 }

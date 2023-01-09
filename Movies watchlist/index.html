@@ -28,26 +28,26 @@
                 <form class="row needs-validation" id="formId" novalidate>
                     <div class="mb-3">
                         <label for="name" class="form-label">Naziv filma:</label>
-                        <input type="text" class="form-control" id="movieName" onkeyup="checkVal()" placeholder="Unesi naziv filma.." required>
+                        <input type="text" class="form-control" id="movieName" placeholder="Unesi naziv filma.." required>
                     </div>
                     <div class="mb-2 col-5">
                         <label for="year" class="form-label">Godina prikaza:</label>
-                        <input type="number" min="1930" max="2021"class="form-control" onchange="checkVal()" id="movieYear" placeholder="Unesi godinu.." required>
+                        <input type="number" min="1930" max="2021"class="form-control" id="movieYear" placeholder="Unesi godinu.." required>
                         <div class="invalid-feedback ms-1">
                           1930-2021
                         </div>
                       </div>
                     <div class="mb-3 col-7">
                         <label for="country" class="form-label">Država:</label>
-                        <input type="text" class="form-control" id="movieCountry" onkeyup="checkVal()" placeholder="Unesi naziv države.." >
+                        <input type="text" class="form-control" id="movieCountry"placeholder="Unesi naziv države.." >
                     </div>
                     <div class="mb-3">
                         <label for="comment" class="form-label">Napomena:</label>
-                        <textarea class="form-control" id="movieCom" onkeyup="checkVal()" placeholder="Unesi napomenu.."></textarea>
+                        <textarea class="form-control" id="movieCom" placeholder="Unesi napomenu.."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="actors" class="form-label">Glumci:</label>
-                        <input type="text" class="form-control" id="movieActors" onkeyup="checkVal()" placeholder="Unesi imena.." required>
+                        <input type="text" class="form-control" id="movieActors" placeholder="Unesi imena.." required>
                     </div>
                     <div class="mb-3">
                       <div class="form-check form-check-inline">
@@ -55,10 +55,10 @@
                         <label class="form-check-label" for="flexRadioDefault1">Odgledan</label>
                       </div>
                     </div>
+                    <div class="modal-footer">
+                      <button type="submit" id="submitBtn" class="btn btn-primary" onclick="addMovie()">Dodaj</button>
+                    </div>
                   </form>
-                <div class="modal-footer">
-                  <button type="submit" id="submitBtn" class="btn btn-primary disabled" onclick="addMovie()" data-bs-dismiss="modal">Dodaj</button>
-                </div>
             </div>
           </div>
         </div>
