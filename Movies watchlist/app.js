@@ -60,10 +60,12 @@ function changeColor() {
   for (let i = 0; i < elements.length; i++) {
     if (elements[i].checked == true) {
       arrayOfMovies[i].watched = true;
-      elements[i].parentElement.parentElement.style ="background-color:#D1E7DD";
+      elements[i].parentElement.parentElement.style =
+        "background-color:#D1E7DD";
     } else {
       arrayOfMovies[i].watched = false;
-      elements[i].parentElement.parentElement.style ="background-color:#F8D7DA";
+      elements[i].parentElement.parentElement.style =
+        "background-color:#F8D7DA";
     }
   }
 }
@@ -72,14 +74,13 @@ const forms = document.querySelectorAll(".needs-validation");
 
 function validate() {
   Array.from(forms).forEach(function (form) {
-    form.addEventListener("keyup",function (event) {
+    form.addEventListener("change",function (event) {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
         }
         form.classList.add("was-validated");
-      },
-      false);
+      },false);
   });
 }
 
@@ -94,22 +95,18 @@ function checkVal() {
 /*funkcija koja dodaje unesene podatke filma u niz arrayOfMovies, a zatim poziva funkciju printMovies(), koja ga dodaje u tabelu*/
 function addMovie() {
   let userInputs = {
-    watched: false,
+    watched: document.getElementById("movieWatched").checked,
     name: document.getElementById("movieName").value,
     year: document.getElementById("movieYear").value,
     country: document.getElementById("movieCountry").value,
     comment: document.getElementById("movieCom").value,
     actors: document.getElementById("movieActors").value.split(","),
   };
-  if(document.getElementById("yesRadio").checked){
-    userInputs.watched=true
-  }
   arrayOfMovies.push(userInputs);
   printMovies();
-
-  /*ovo služi da podrazumijevano radio dugme bude "ne" i polja forme u modalnom prozoru budu prazna i bez validacije poslije dodavanja novog filma, pri sledećem otvaranju klikom na dugme "dodaj novi film"*/
+  /*ovo služi da polja forme u modalnom prozoru budu prazna i bez validacije poslije dodavanja novog filma, pri sledećem otvaranju klikom na dugme "dodaj novi film"*/
   userInputs = {
-    watched: (document.getElementById("noRadio").checked=true),
+    watched: (document.getElementById("movieWatched").checked = false),
     name: (document.getElementById("movieName").value = ""),
     year: (document.getElementById("movieYear").value = ""),
     country: (document.getElementById("movieCountry").value = ""),

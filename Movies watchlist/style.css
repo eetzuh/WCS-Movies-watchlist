@@ -1,3 +1,4 @@
+/*ovo služi da u slučaju dodavanja velike količine teksta širina kolone ostane fiksirana, i da se tekst prebaci u novi red */
 table {
   table-layout: fixed;
   word-wrap: break-word;
