@@ -26,7 +26,7 @@ let arrayOfMovies = [
 ];
 
 /*funkcija koja dodaje filmove u tabelu, čitajući objekte sa niza arrayOfMovies, koji čuva podatake o svakom filmu prikazanog u tabeli. Poziva se na onload, da bi se hardkodovani filmovi odmah prikazali u tabeli.
-Kikom na dugme "dodaj" poslije unosa podataka u formi (funkcija addMovie(), linija 95), film se dodaje u niz, pa se zatim poziva funkcija printMovies().
+Kikom na dugme "dodaj" poslije unosa podataka u formi (funkcija addMovie(), linija 96), film se dodaje u niz, pa se zatim poziva funkcija printMovies().
 Varijabla movieNum čita zadnji indeks objekta film, koji je dodat u niz arrayOfMovies, da bi pri pozivu funkcije printMovies()
 u tabelu ne bi bili dodati prethodni. */
 
