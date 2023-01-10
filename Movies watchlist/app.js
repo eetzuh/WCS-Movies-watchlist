@@ -2,7 +2,7 @@ let arrayOfMovies = [
   {
     watched: false,
     name: "Gladiator",
-    year: "2000",
+    year: 2000,
     country: "USA",
     comment: "",
     actors: ["Russel C.", "Joaquin P."],
@@ -10,7 +10,7 @@ let arrayOfMovies = [
   {
     watched: false,
     name: "Reservoir Dogs",
-    year: "1992",
+    year: 1992,
     country: "USA",
     comment: "",
     actors: ["Harvey K.", "Tim R."],
@@ -18,7 +18,7 @@ let arrayOfMovies = [
   {
     watched: false,
     name: "City of God",
-    year: "2002",
+    year: 2002,
     country: "Brazil",
     comment: "",
     actors: ["Alexandre R.", "Leandro F."],
@@ -26,7 +26,7 @@ let arrayOfMovies = [
 ];
 
 /*funkcija koja dodaje filmove u tabelu, čitajući objekte sa niza arrayOfMovies, koji čuva podatake o svakom filmu prikazanog u tabeli. Poziva se na onload, da bi se hardkodovani filmovi odmah prikazali u tabeli.
-Kikom na dugme "dodaj" poslije unosa podataka u formi (funkcija addMovie(), linija 96), film se dodaje u niz, pa se zatim poziva funkcija printMovies().
+Kikom na dugme "dodaj" poslije unosa podataka u formi (funkcija addMovie(), linija 97), film se dodaje u niz, pa se zatim poziva funkcija printMovies().
 Varijabla movieNum čita zadnji indeks objekta film, koji je dodat u niz arrayOfMovies, da bi pri pozivu funkcije printMovies()
 u tabelu ne bi bili dodati prethodni. */
 
@@ -99,7 +99,7 @@ function addMovie() {
   let userInputs = {
     watched: document.getElementById("movieWatched").checked,
     name: document.getElementById("movieName").value,
-    year: document.getElementById("movieYear").value,
+    year: parseInt(document.getElementById("movieYear").value),
     country: document.getElementById("movieCountry").value,
     comment: document.getElementById("movieCom").value,
     actors: document.getElementById("movieActors").value.split(","),
@@ -109,12 +109,12 @@ function addMovie() {
     printMovies();
     /*ovo služi da polja forme u modalnom prozoru budu prazna poslije dodavanja novog filma*/
     userInputs = {
-      watched: (document.getElementById("movieWatched").checked = false),
-      name: (document.getElementById("movieName").value = ""),
-      year: (document.getElementById("movieYear").value = ""),
-      country: (document.getElementById("movieCountry").value = ""),
-      comment: (document.getElementById("movieCom").value = ""),
-      actors: (document.getElementById("movieActors").value = ""),
+      watched: document.getElementById("movieWatched").checked = false,
+      name: document.getElementById("movieName").value = "",
+      year: document.getElementById("movieYear").value = "",
+      country: document.getElementById("movieCountry").value = "",
+      comment: document.getElementById("movieCom").value = "",
+      actors: document.getElementById("movieActors").value = "",
     };
     successfulInput="no"
   }
